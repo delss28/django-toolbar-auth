@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="content"><a href="{% url 'main:home' %}">Главная</a><a href="{% url 'users:profile' %}">/Личный кабинет</a></div>
+<div class='profile_cho'>
+    <div class="profile">
+        <div class="profile_title">Профиль пользователя</div>
+        <form action="{% url "users:profile" %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% if user.avatar %}
+            <img src="{{ user.avatar.url }}" alt="Аватар пользователя" class="avatar" style="max-width: 475px;">
+            {% else %}
+            <img src="{% static "/main/img/baseavatar.jpg" %}" alt="Аватар пользователя" class="avatar" style="max-width: 475px;">
+            {% endif %}
+            <input type="file" 
+                class="change_image" id="id_avatar" name="avatar" accept="image/*">
+                {% if form.image.errors %}
+                <div>{{form.image.errors}}</div>
+                {% endif %}
+
+            <label for="id_first_name" class="profile_text-field__label">Имя</label>
+            <input placeholder="Name" 
+                class="profile_text-field__input" id="id_first_name" type="text" name="first_name" 
+                value="{{form.first_name.value}}" required>
+                {% if form.first_name.errors %}
+                <div>{{form.first_name.errors}}</div>
+                {% endif %}
+
+            <label for="id_last_name" class="profile_text-field__label">Фамилия</label>
+            <input placeholder="Surname" 
+                class="profile_text-field__input" id="id_last_name" type="text" name="last_name"
+                value="{{form.last_name.value}}" required>
+                {% if form.last_name.errors %}
+                <div>{{form.last_name.errors}}</div>
+                {% endif %}
+
+            <label for="id_patronymic" class="profile_text-field__label">Отчество</label>
+            <input placeholder="Patronymic" 
+                class="profile_text-field__input" id="id_patronymic" type="text" name="patronymic"
+                value="{% if form.patronymic.value %}{{ form.patronymic.value }}{% endif %}" >
+                {% if form.patronymic.errors %}
+                <div>{{form.patronymic.errors}}</div>
+                {% endif %}
+
+            <label for="id_username" class="profile_text-field__label">Имя пользователя</label>
+            <input placeholder="Username" type="text" 
+                class="profile_text-field__input" id="id_username"  name="username" 
+                value="{{form.username.value}}" required>
+                {% if form.username.errors %}
+                <div>{{form.username.errors}}</div>
+                {% endif %}
+
+            <label for="id_email" class="profile_text-field__label">Электронная почта</label>
+            <input placeholder="Email" type="email" 
+                class="profile_text-field__input" id="id_email" name="email"
+                value="{{form.email.value}}" required>
+                {% if form.email.errors %}
+                <div>{{form.email.errors}}</div>
+                {% endif %}
+
+            <label for="id_number" class="profile_text-field__label">Контактный телефон</label>
+            <input placeholder="Contact number" type="text" 
+                class="profile_text-field__input" id="id_number"  name="number"
+                value="{% if form.number.value %}{{ form.number.value }}{% endif %}" required>
+                {% if form.number.errors %}
+                <div>{{form.number.errors}}</div>
+                {% endif %}
+
+
+            <button type="submit" class="submit">Сохранить</button>
+        </form>
+    </div>
+    <div class="profile_service">
+        <div class="profile_title">История услуг</div>
+            {% for appointment in appointments %}
+                <h4>{{ appointment }}</h4>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

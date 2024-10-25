@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    {% block header %}
+    <nav class="navbar">
+        <div class="logo">
+            <a href="{% url "index" %}">
+            <img src="{% static 'img/logo.png' %}" alt="Логотип">
+            <div class="logo-text">Сладкое чудо</div>
+            </a>
+        
+        <ul class="nav-links">
+          <li><a href="{% url "index" %}">Главная</a></li>
+          <li><a href="{% url "catalog" %}">Каталог</a></li>
+          <li><a href="{% url "contact" %}">Контакты</a></li>
+        </ul>
+        </div>
+        <div class="auth-buttons">
+          <button>Войти</button>
+          <button>Зарегистрироваться</button>
+        </div>
+    </nav>
+    {% endblock %}
+    <main>
+    {% block content %}
+    {% endblock %}
+    </main>
+    <footer>
+    {% block footer %}
+    {% endblock %}
+    </footer>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html> 
+

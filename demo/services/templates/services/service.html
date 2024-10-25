@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% load services_tags %}
+
+{% block content %}
+<section>
+
+    <div class="content"><a href="{% url 'main:home' %}">Главная</a><a href="{% url 'services:index' %}">/Услуги</a><a href="#">/{{ service.title }}</a></div>
+<div class="service">
+    <span>Врачи</span>
+    <br>
+    {{ service.id_doctor  }}
+    <br>
+    <span>Кто это?</span>
+    <br>
+    {{ service.description }}
+    <br>
+</div>
+</section>
+<section>
+    {% endblock content %}

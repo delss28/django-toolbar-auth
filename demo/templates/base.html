@@ -1,0 +1,133 @@
+{% load static %}
+{% load services_tags %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+        <title>«Витаминка+» - Медицинский центр</title>
+        <link rel="icon" href="{% static "main/img/favicon.ico" %}" type="image/x-icon">
+        <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'main/css/swiper-bundle.min.css' %}"/>
+	</head>
+	<body>
+        <center>
+            <div id="accessibility-menu" class="accessibility-menu">
+              <button id="menu-button" class="menu-button">☰</button>
+              <div id="accessibility-options" class="accessibility-options">
+                <button class="option" data-scheme="high-contrast">Увеличение контраста</button>
+                <button class="option" data-scheme="invert">Инверсия цвета</button>
+                <button class="option" data-scheme="daltonism">Эффект дальтонизма</button>
+                <button class="option" data-scheme="sepia">Эффект сепии</button>
+                <button class="option" data-scheme="high-contrast-text">Эффект смещения</button>
+                <button class="option" data-scheme="low-saturation">Уменьшение яркости</button>
+                <button class="option" data-scheme="default" style="width: 100%;">По умолчанию</button>
+              </div>
+            </div>
+        </center>
+        <section>
+            <header class="header">
+                <ul class="menu-up">
+                    <li>
+                        <a href="{% url "main:home" %}"><img src="{% static 'main/img/logo.png' %}" class="logo" alt="Логотип клиники"></a>
+                    </li>
+                    <li><i>На здоровье нельзя экономить!</i></li>
+                    <li>+79028830469</li>
+                </ul>
+            </header>
+        <div class="blueline">
+            <div class="menu-box">
+                <ul class="menu">
+                    
+                    <li><span><a href="{% url 'main:about' %}">О нас</a></span></li>
+                    <li><span><a href="{% url 'services:index' %}">Услуги</a></span></li>
+                    <li><span><a href="{% url 'main:vacancies' %}">Вакансии</a></span></li>
+                    <li><span><a href="{% url 'main:contact' %}">Контакты</a></span></li>
+                    <li>
+                    {% if not user.is_authenticated %}
+                    <div class="button button-container"><a href="#popup_sign">Войти</a></div>
+                    <div class="button button-container"><a href="#popup_registration">Зарегистрироваться</a></div>
+                    {% else %}
+                    <div class="button button-container"><a href="{% url "user:profile" %}">Личный кабинет</a></div>
+                    <div class="button button-container"><a href="#popup">Запись на прием</a></div>
+                    <div class="button button-container"><a href="{% url "user:logout" %}">Выйти</a></div>
+                    {% endif %}
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        </section>
+        {% include "notifications.html" %}
+        {% block content %}{% endblock content %}
+        <section>
+            <br>
+            <div class="blueline">
+                <i class="line">На здоровье нельзя экономить!</i>
+            </div>
+            <div class="bottom-menu">
+                <ul class="bottom-pr">
+                    <li>
+                        <a href="{% url 'main:home' %}"><img src="{% static 'main/img/logo.png' %}" class="logo-2"></a>
+                        <br>
+                        Copyright @2024 Витаминка+
+                    </li>
+                    <li><ul class="bottom-list">
+                        <li><div class="word-a">Компания Витаминка+</div></li>
+                        <li><a href="{% url 'main:home' %}">Главная</a></li>
+                        <li><a href="{% url 'main:about' %}">О нас</a></li>
+                        <li><a href="{% url 'services:index' %}">Услуги</a></li>
+                        <li><a href="{% url 'main:vacancies' %}">Вакансии</a></li>
+                        <li><a href="{% url 'main:contact' %}">Контакты</a></li>
+                    </ul></li>
+                    <li>Цены, указанные на сайте, не являются публичной офертой. 
+                        Стоимость услуг устанавливается и оплачивается согласно прейскуранту поликлиники, 
+                        действующему на момент оказания соответствующей услуги.
+                        С точной информацией по стоимости услуг можно ознакомится по телефону
+                        +79028830469</li>
+                </ul>
+            </div>
+            {% if user.is_admin or user.is_staff %}
+            <div class="bottom"> 
+                <div class="button button-admin"><a href="{% url 'admin:index' %}">Админ панель</a></div>
+            </div>
+            {% endif %}
+        </section>
+        <section>
+            <div id="popup_registration" class="popup">
+                <a href="#header" class="popup_area"></a>
+                <div class="popup_body">
+                    <div class="popup_content">
+                        <a href="#header" class="popup_close"><img src="{% static 'main/img/cancel.jpg' %}" class="cancel" align="right"></a>
+                        {% include "users/registration_widget.html" %}
+                    </div>
+                </div>
+            </div>
+            <div id="popup_sign" class="popup">
+                <a href="#header" class="popup_area"></a>
+                <div class="popup_body">
+                    <div class="popup_content">
+                        <a href="#header" class="popup_close"><img src="{% static 'main/img/cancel.jpg' %}" class="cancel" align="right"></a>
+                        {% include "users/login_widget.html" %}
+                    </div>
+                </div>
+            </div>
+            <div id="popup" class="popup">
+                <a href="#header" class="popup_area"></a>
+                <div class="popup_body">
+                    <div class="popup_content">
+                        <a href="#header" class="popup_close"><img src="{% static 'main/img/cancel.jpg' %}" class="cancel" align="right"></a>
+                        {% include "users/appointment_widget.html" %}
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script src="{% static "main/js/jquery/jquery-3.7.0.min.js" %}"></script>
+        <script src="{% static "main/js/jquery-ajax.js" %}"></script>
+        <script src="{% static 'main/js/swiper-bundle.min.js' %}"></script>
+        <script src="{% static 'main/js/script.js' %}"></script>
+        <script src="{% static "main/js/bootstrap/bootstrap.bundle.min.js" %}"></script>
+	</body>
+</html>

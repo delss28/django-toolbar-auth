@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+{% load services_tags %}
+
+{% block content %}
+        <section>
+            <div class="content"><a href="{% url 'main:home' %}">Главная</a><a href="{% url 'services:index' %}">/Услуги</a></div>
+            
+        <div class="services">
+            {% for service in services %}
+            <a href="{% url 'services:service' service.slug %}">{{ service.title }}</a>
+            {% endfor %}
+        </div>
+        </section>
+        {% if services %}
+            <div class="pagination">
+                <a class="{% if not services.has_previous %}disabled{% endif %}" href="{% if services.has_previous %}?{% change_params page=services.previous_page_number %}{% else %}#{% endif %}">Назад</a>
+                {% for page in services.paginator.page_range %}
+                    {% if page >= services.number|add:-2 and page <= services.number|add:2 %}
+                        <a class="{% if services.number == page %} active {% endif %}" href="?{% change_params page=page %}">{{ page }}</a>
+                    {% endif %}
+                {% endfor %}
+                    <a class="{% if not services.has_next %}disabled{% endif %}" href="{% if services.has_next %}?{% change_params page=services.next_page_number %}{% else %}#{% endif %}">Следующая</a>
+            </div>
+{% endif %}
+
+{% endblock content %}
+        

@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load static %}
+{% load services_tags %}
+{% block content %}
+<section>
+    <div>
+        <ul class="features">
+            <li><img src="{% static 'main/img/ambulances.png' %}"><div class="word-features">Большой<br> выбор услуг</div></li>
+            <li><img src="{% static 'main/img/calendar.png' %}"><div class="word-features">Работаем без<br> выходных</div></li>
+            <li><img src="{% static 'main/img/microscope.png' %}"><div class="word-features">Ежедневный<br> забор крови</div></li>
+            <li><img src="{% static 'main/img/family.png' %}"><div class="word-features">Прием детей<br> и взрослых</div></li>
+        </ul>
+    </div>
+</section>
+<section>
+    <br>
+<div class="container">
+    <img src="{% static 'main/img/image 1.png' %}" class="photo">
+    <div class="photo-word">Мы всегда рады вас видеть!</div>
+</div>
+
+<div>
+    <div class="review">
+        Отзывы пациентов
+    </div>
+    <br>
+    <div class="image-slider swiper">
+        <div class="image-slider__wrapper swiper-wrapper">
+            <div class="image-slider__slide swiper-slide">
+                <div class="image-slider__image">
+                    Елена
+                    <br>
+                    Выражаю благодарность врачу-эндоскописту Вилкову Д.С. и его медсестре за проведенную процедуру ФГДС. 
+                    Очень переживала перед процедурой, так как у меня явно выраженный рвотный рефлекс. 
+                    Доктор перед процедурой подробно расспросил, что беспокоит, болит. 
+                    Во время процедуры подсказывал, как себя вести, чтобы процедура прошла легко. Спасибо!
+                </div>
+            </div>
+            <div class="image-slider__slide swiper-slide">
+                <div class="image-slider__image">
+                    Оксана Амосова
+                    <br>
+                    Выражаю глубокую признательность и сердечную благодарность врачу- стоматологу Малянову 
+                    Дмитрию Николаевичу и его медсестре Эле за лечение и 
+                    внимательное отношение к клиентам. Вы настоящие профессионалы! Восхищаюсь вами.
+                </div>
+            </div>
+            <div class="image-slider__slide swiper-slide">
+                <div class="image-slider__image">
+                    Мария К.
+                    <br>
+                    Была на консультации у Егоровой Н. К. давно не встречала настолько грамотных и опытных врачей! 
+                    Вежливый и очень внимательный специалист. 
+                    Консультации и осмотру уделяет столько времени, сколько понадобится. 
+                    Врач с большой буквы! Дальнейшее наблюдение только у Н.К. в Витаминке.
+                </div>
+            </div>
+            <div class="image-slider__slide swiper-slide">
+                <div class="image-slider__image">
+                    Шустова Татьяна
+                    <br>
+                    Хочу поблагодарить врача-травматолога Захряпина С.Н, Месяц назад я оперировалась у него.
+                    Операция прошла успешно и сейчас я прохожу курс реабилитации и восстановления. 
+                    Сергей Николаевич очень профессиональный, опытный и отзывчивый доктор.
+                    Рекомендую его, если вам нужна помощь хирурга-ортопеда.
+                </div>
+            </div>
+            <div class="image-slider__slide swiper-slide">
+                <div class="image-slider__image">
+                    Минеева Л. А.
+                    <br>
+                    Грамотный и опытный врач. Такого не встречала. Спас сына и его семью от алкоголизма. 
+                    Не отказался от него, как другие врачи, а работал с ним до победы.
+                </div>
+            </div>
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+</div>
+<br>
+</section>
+{% endblock content %}
+
+

@@ -1,0 +1,25 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}
+Главная страница
+
+{% endblock %}
+{% block content %}
+<h2 class="deviz">Мир сладких открытий</h2>
+  <div class="container">
+    <div class="slider-container">
+        <div class="slide active">
+        <img src="{% static "img/image1.jpg" %} " alt="Слайд 1">
+        </div>
+        <div class="slide">
+        <img src="{% static "img/image2.jpg" %}" alt="Слайд 2">
+        </div>
+        <div class="slide">
+        <img src="{% static "img/image3.jpg" %}" alt="Слайд 3">
+        </div>
+
+      <button class="prev">&lt;</button>
+      <button class="next">&gt;</button>
+    </div>
+  </div>
+{% endblock %}

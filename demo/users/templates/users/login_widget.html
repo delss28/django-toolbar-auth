@@ -1,0 +1,15 @@
+<div class="popup_title">Авторизация</div>
+<form action="{% url 'user:login' %}" method="post">
+    {% csrf_token %}
+    {% if request.GET.next %}
+        <input type="hidden" name="next" value={{request.GET.next}}>
+    {% endif %}
+    <label for="id_username" class="text-field__label">Имя пользователя</label>
+    <input placeholder="Username" for="id_username" 
+        value="{% if form.username.value %}{{ form.username.value }}{% endif %}" type="text" class="text-field__input" name="username" required>
+                
+    <label for="id_password" class="text-field__label">Пароль</label>
+    <input placeholder="Password" for="id_password"  type="password" class="text-field__input" name="password" required>
+
+    <input type="submit" value="Войти" class="submit" >
+</form>

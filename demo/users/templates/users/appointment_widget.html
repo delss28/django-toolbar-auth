@@ -1,0 +1,33 @@
+
+{% load services_tags %}
+<div class="popup_title">Запись на прием</div>
+                        <div class="text-field">
+                            <form action="{% url 'user:appointment' %}" method="post">
+                            {% csrf_token %}
+
+                            <label for="id_service_id" class="text-fieldlabel ">Выберите услугу</label>
+                            <br>
+                            <select for="id_service_id" class="text-fieldlabel " name="id_service">
+                            
+                            {% tag_services as services %}
+                            {% for service in services %}
+                            <option value="{{ service.id }}">{{ service.title }}</option>
+                            {% endfor %}
+                            </select>
+                            <br>
+
+                            <label for="id_appointment_date" class="text-fieldlabel">Выберите дату</label>
+                            <br>
+                            <input for="id_appointment_date" type="date" class="agree" name="appointment_date">
+                            <br>
+                            
+                            <label for="id_appointment_time" class="text-fieldlabel">Выберите время</label>
+                            <br>
+                            <input for="id_appointment_time" type="time" class="agree" name="appointment_time">
+                            <br>
+
+                            <input for="id_user_id" type="hidden" name="id_user" value={{user.id}}>
+
+                            <input type="submit"  value="Записаться" class="submit">
+                            </form>
+                        </div>

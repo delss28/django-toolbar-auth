@@ -1,0 +1,83 @@
+{% load static %}
+
+<div class="popup_title">Регистрация</div>
+                        <form action="{% url 'user:registration' %}" method="post">
+                            {% csrf_token %}
+                            
+                            <label for="id_first_name" class="text-field__label">Имя</label>
+                            <input placeholder="Name" type="text" 
+                                class="text-field__input" id="id_first_name"  name="first_name" 
+                                value="{% if form.first_name.value %}{{ form.first_name.value }}{% endif %}" required>
+                                {% if form.first_name.errors %}
+                                <div>{{form.first_name.errors}}</div>
+                                {% endif %}
+
+                            <label for="id_last_name" class="text-field__label">Фамилия</label>
+                            <input placeholder="Surname" type="text" 
+                                class="text-field__input" id="id_last_name"  name="last_name" 
+                                value="{% if form.last_name.value %}{{ form.last_name.value }}{% endif %}" required>
+                                {% if form.last_name.errors %}
+                                <div>{{form.last_name.errors}}</div>
+                                {% endif %}
+
+                            <label for="id_patronymic" class="text-field__label">Отчество</label>
+                            <label class="text-field__label agree">У меня нет отчества</label>
+                            <input type="checkbox" name="Agreement" onclick="agreeForm(this.form)" > 
+                            <input placeholder="Patronymic" type="text" 
+                                class="text-field__input" id="id_patronymic"  name="patronymic" 
+                                value="{% if form.patronymic.value %}{{ form.patronymic.value }}{% endif %}">
+                                {% if form.patronymic.errors %}
+                                <div>{{form.patronymic.errors}}</div>
+                                {% endif %}
+
+                            <label for="id_username" class="text-field__label">Имя пользователя</label>
+                            <input placeholder="Login" type="text" 
+                                class="text-field__input" id="id_username" name="username" 
+                                value="{% if form.username.value %}{{ form.username.value }}{% endif %}" required>
+                                {% if form.username.errors %}
+                                <div>{{form.username.errors}}</div>
+                                {% endif %}
+
+                            <label for="id_email" class="text-field__label">Электронная почта</label>
+                            <input placeholder="Email" type="email" 
+                                class="text-field__input" id="id_email" name="email" 
+                                value="{% if form.email.value %}{{ form.email.value }}{% endif %}" required>
+                                {% if form.email.errors %}
+                                <div>{{form.email.errors}}</div>
+                                {% endif %}
+
+                            <label for="id_number" class="text-field__label">Контактный телефон</label>
+                            <input placeholder="Contact number" type="text" 
+                                class="text-field__input" id="id_number"  name="number" 
+                                value="{% if form.number.value %}{{ form.number.value }}{% endif %}" required>
+                                {% if form.number.errors %}
+                                <div>{{form.number.errors}}</div>
+                                {% endif %}
+
+                            <label for="id_dateOfBirth" class="text-field__label">Дата рождения</label>
+                            <input type="date" 
+                                class="agree" id="id_dateOfBirth" name="dateOfBirth" 
+                                value="{% if form.dateOfBirth.value %}{{ form.dateOfBirth.value }}{% endif %}" required>
+                                {% if form.dateOfBirth.errors %}
+                                <div>{{form.dateOfBirth.errors}}</div>
+                                {% endif %}
+
+                            <label for="id_password1" class="text-field__label">Пароль</label>
+                            <input placeholder="Password" type="password" 
+                                class="text-field__input" id="id_password1" name="password1"
+                                value="{% if form.password1.value %}{{ form.password1.value }}{% endif %}" required>
+                                {% if form.password1.errors %}
+                                <div>{{form.password1.errors}}</div>
+                                {% endif %}
+
+                            <label for="password2" class="text-field__label">Подтверждение пароля</label>
+                            <input placeholder="Confirm password" type="password" 
+                                class="text-field__input" id="password2" name="password2" 
+                                value="{% if form.password2.value %}{{ form.password2.value }}{% endif %}" required>
+                                {% if form.password2.errors %}
+                                <div>{{form.password2.errors}}</div>
+                                {% endif %}
+
+                            <input type="submit" value="Зарегистрироваться" class="submit" >
+                        </form>
+                        <script src="{% static 'main/js/registr.js' %}"></script>

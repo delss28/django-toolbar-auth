@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+        <section>
+            <div class="content"><a href="{% url 'main:home' %}">Главная</a><a href="{% url 'main:contact' %}">/Контакты</a></div>
+        <div class="contact">
+            <span>Витаминка+ на Октябрьском проспекте</span>
+            <br>
+            Почта: delss56@mail.ru
+            <br>
+            Лицензия № Л041-01134-33/00341821 от 12.03.2020 г
+            <br>
+            Режим работы:
+            <br>
+            Понедельник-пятница 8.00-19.00.
+            <br>
+            Суббота-воскресенье 9.00-15.00.
+            <br>
+            Телефон: +79028830469
+            <br>
+            <div class="iage">
+                <img src="{% static 'main/img/image 2.png' %}" >
+            </div>
+        </div>
+        </section>
+        {% endblock content %}
+

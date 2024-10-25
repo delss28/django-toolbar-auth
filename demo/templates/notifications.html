@@ -1,0 +1,35 @@
+{% load static %}
+
+
+{% if form.non_field_errors %}
+
+<div class="about">
+    {{form.non_field_errors}}
+</div>
+{% endif %}
+
+
+
+<div class="">
+    <div class="">
+        <div class="message_mes">
+            {% if messages %}
+                {% for message in messages %}
+                    {% if message.tags == 'success' %}
+                    <div id="notification" class="success_mes" role="alert">
+                        {{ message }}
+                    </div>
+                    {% endif %}
+                    {% if message.tags == 'warning' %}
+                    <div id="notification" class="warning_mes" role="alert">
+                        {{ message }}
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+            <div id="jq-notification" class="messagess" style="display: none;" role="alert">
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

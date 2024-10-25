@@ -1,0 +1,16 @@
+[
+    {
+        "model": "main.doctor",
+        "pk": 1,
+        "fields": {
+            "full_name": "Лаврентьева Наталья Борисовна",
+            "date_of_birth": "1996-04-26",
+            "job_title": "ЛОР",
+            "work_experience": 5,
+            "phone": "+7 (951) 900-49-78",
+            "mail": "trofim1965@ya.ru",
+            "room_number": 101,
+            "salary": "35000.00"
+        }
+    }
+]
